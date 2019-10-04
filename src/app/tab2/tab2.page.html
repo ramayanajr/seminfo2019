@@ -7,18 +7,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-card class="welcome-card">
+  <ion-card *ngFor="let nota of noteService.anotacoes" class="welcome-card">
     <ion-card-header>
-      <ion-card-title>{{ titulo || "Sem título"}}</ion-card-title>
+      <ion-card-title>{{ nota.titulo || "Sem título"}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>{{ anotacao || "Sem anotações"}}</p>
+      <p>{{ nota.anotacao || "Sem anotações"}}</p>
     </ion-card-content>
-    <ion-chip>
-      <ion-label>Programação</ion-label>
+    <ion-chip *ngFor="let tag of nota.tags">
+      <ion-label>{{tag}}</ion-label>
     </ion-chip>
   </ion-card>
-  <ion-card class="image-card">    
+  <!-- <ion-card class="image-card">    
     <ion-card-header>
       <ion-card-title>{{ titulo || "Sem título da Imagem"}}</ion-card-title>      
     </ion-card-header>
@@ -29,11 +29,11 @@
     <ion-chip>
       <ion-label>Álgebra Linear</ion-label>
     </ion-chip>
-  </ion-card>  
+  </ion-card>   -->
 </ion-content>
 <ion-footer>
   <ion-toolbar color="dark">
-    <ion-input placeholder="Digite o Título"></ion-input>
+    <ion-input [(ngModel)]="newTitulo" placeholder="Digite o Título"></ion-input>
   </ion-toolbar>
 </ion-footer>
 <ion-footer>
@@ -42,10 +42,10 @@
       <ion-button>
         <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button (click)="addNota()">
         <ion-icon slot="icon-only" name="send"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-textarea autoGrow="true" placeholder="Digite aqui suas observações"></ion-textarea>
+    <ion-textarea [(ngModel)]="newNota" autoGrow="true" placeholder="Digite aqui suas observações"></ion-textarea>
   </ion-toolbar>
 </ion-footer>

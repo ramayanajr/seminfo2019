@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { AnotacoesService } from '../services/anotacoes.service';
+import { TopicosService } from '../services/topicos.service';
 
 @Component({
   selector: 'app-tab2',
@@ -8,8 +10,18 @@ import { AlertController } from '@ionic/angular';
 })
 export class Tab2Page {
 
-  constructor(private alertController: AlertController) {}
+  newTitulo; newNota;
 
-  
+  constructor(
+    private alertController: AlertController,
+    private noteService: AnotacoesService,
+    private topService: TopicosService) {}
+
+  addNota() {
+    console.log('Enviar', this.newTitulo, this.newNota, 
+    this.topService.topicos.filter((item, index, arr) => item.ativado).map(({nome}) => nome));
+    this.noteService.addAnotacao(this.newTitulo, this.newNota, 
+      this.topService.topicos.filter((item, index, arr) => item.ativado).map(({nome}) => nome));
+  }
 
 }
