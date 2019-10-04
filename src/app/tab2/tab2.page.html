@@ -12,7 +12,8 @@
       <ion-card-title>{{ nota.titulo || "Sem título"}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>{{ nota.anotacao || "Sem anotações"}}</p>
+      <p *ngIf="nota.anotacao">{{ nota.anotacao || "Sem anotações"}}</p>
+      <img *ngIf="nota.foto" [src]="nota.foto" alt="" />    
     </ion-card-content>
     <ion-chip *ngFor="let tag of nota.tags">
       <ion-label>{{tag}}</ion-label>
@@ -39,7 +40,7 @@
 <ion-footer>
   <ion-toolbar color="medium">
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button (click)="capturar()">
         <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
       <ion-button (click)="addNota()">

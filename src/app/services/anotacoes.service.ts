@@ -32,4 +32,9 @@ export class AnotacoesService {
     this.setAnotacoes();
   }
 
+  addFotoAnotacao(titulo, foto, tags) {
+    this.anotacoes.unshift({titulo, foto, tags});
+    this.setAnotacoes();
+  }
+
 }
