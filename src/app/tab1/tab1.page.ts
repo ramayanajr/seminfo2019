@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RecuperaAPIService } from '../services/recupera-api.service';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  users: any;
+
+  constructor(
+    private api: RecuperaAPIService) {
+      api.getUsers().then((data: any) => {
+        this.users = data.data;
+      });
+    }
 
 }

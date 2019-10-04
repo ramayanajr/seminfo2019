@@ -8,14 +8,13 @@
 
 <ion-content>
     <ion-list>
-        <ion-item>
+        <ion-item *ngFor="let user of users">
           <ion-avatar slot="end">
-            <img src="/assets/shapes.svg">
+            <img [src]="user.avatar">
           </ion-avatar>
           <ion-label>
-            <h3>Lorem ipsum</h3>
-            <p>dolor sit amet</p>
-            <p>consectetur adipiscing elit. Duis ut urna neque.</p>
+            <h3>{{user.first_name}} {{user.last_name}}</h3>
+            <p>{{user.email}}</p>            
           </ion-label>
         </ion-item>
     </ion-list>

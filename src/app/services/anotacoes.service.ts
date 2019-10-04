@@ -8,7 +8,7 @@ export class AnotacoesService {
 
   public anotacoes: any = [];
 
-  constructor(private storage: Storage) { 
+  constructor(private storage: Storage) {
     this.getAnotacoes();
   }
 
