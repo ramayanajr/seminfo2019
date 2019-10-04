@@ -1,9 +1,51 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Observações
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-title>{{ titulo || "Sem título"}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ anotacao || "Sem anotações"}}</p>
+    </ion-card-content>
+    <ion-chip>
+      <ion-label>Programação</ion-label>
+    </ion-chip>
+  </ion-card>
+  <ion-card class="image-card">    
+    <ion-card-header>
+      <ion-card-title>{{ titulo || "Sem título da Imagem"}}</ion-card-title>      
+    </ion-card-header>
+    <img src="/assets/shapes.svg" alt="" />    
+    <ion-chip>
+      <ion-label>Metodologia Científica</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-label>Álgebra Linear</ion-label>
+    </ion-chip>
+  </ion-card>  
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="dark">
+    <ion-input placeholder="Digite o Título"></ion-input>
+  </ion-toolbar>
+</ion-footer>
+<ion-footer>
+  <ion-toolbar color="medium">
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="camera"></ion-icon>
+      </ion-button>
+      <ion-button>
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-textarea autoGrow="true" placeholder="Digite aqui suas observações"></ion-textarea>
+  </ion-toolbar>
+</ion-footer>
