@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentAlertPrompt()">
+        <ion-icon name="add" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       Filtros
     </ion-title>
@@ -8,25 +13,9 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
-      <ion-label>Algebra Linear</ion-label>
-      <ion-toggle color="primary"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Metodologia Cientifica</ion-label>
-      <ion-toggle color="secondary"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Projeto e Analise de Algoritimos</ion-label>
-      <ion-toggle color="danger"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Metodologia de Projeto de Sistemas</ion-label>
-      <ion-toggle color="light"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Bancos de Dados</ion-label>
-      <ion-toggle color="dark"></ion-toggle>
-    </ion-item>
+    <ion-item *ngFor="let topico of topService.topicos">
+      <ion-label>{{topico.nome}}</ion-label>
+      <ion-toggle color="primary" [(ngModel)]="topico.ativado" (ionChange)="setEstado($event)"></ion-toggle>
+    </ion-item>    
   </ion-list>
 </ion-content>
