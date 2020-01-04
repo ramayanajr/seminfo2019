@@ -13,11 +13,17 @@
     </ion-card-header>
     <ion-card-content>
       <p *ngIf="nota.anotacao">{{ nota.anotacao || "Sem anotações"}}</p>
-      <img *ngIf="nota.foto" [src]="nota.foto" alt="" />    
+      <img *ngIf="nota.foto" [src]="nota.foto" alt="" />
     </ion-card-content>
     <ion-chip *ngFor="let tag of nota.tags">
       <ion-label>{{tag}}</ion-label>
     </ion-chip>
+    <ion-button (click)="compartilhar(nota)">
+      <ion-icon name="share"></ion-icon>
+    </ion-button>
+    <ion-button color="danger" (click)="deleteNota(nota.titulo)">
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-button>
   </ion-card>
   <!-- <ion-card class="image-card">    
     <ion-card-header>
@@ -34,7 +40,10 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar color="dark">
-    <ion-input [(ngModel)]="newTitulo" placeholder="Digite o Título"></ion-input>
+    <ion-input
+      [(ngModel)]="newTitulo"
+      placeholder="Digite o Título"
+    ></ion-input>
   </ion-toolbar>
 </ion-footer>
 <ion-footer>
@@ -47,6 +56,10 @@
         <ion-icon slot="icon-only" name="send"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-textarea [(ngModel)]="newNota" autoGrow="true" placeholder="Digite aqui suas observações"></ion-textarea>
+    <ion-textarea
+      [(ngModel)]="newNota"
+      autoGrow="true"
+      placeholder="Digite aqui suas observações"
+    ></ion-textarea>
   </ion-toolbar>
 </ion-footer>
